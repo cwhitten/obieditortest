@@ -1,25 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Form from "react-jsonschema-form";
 
+import schema from "./appschema.json";
+
+const onChange = ({ formData }, e) => {
+  console.log("onChange", formData, e);
+};
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="App" style={{ width: "700px", marginLeft: "200px" }}>
+        <Form
+          noValidate
+          className="schemaForm"
+          onChange={onChange}
+          formData={{}}
+          // onSubmit={onSubmit}
+          schema={schema}
+          uiSchema={{}}
+        >
+          {/* <button
+            // ref={btn => {
+            //   submitButton = btn;
+            // }}
+            className="hidden"
+          /> */}
+        </Form>
       </div>
     );
   }
